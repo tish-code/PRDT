@@ -16,9 +16,8 @@ function NavBar() {
             handleOpen();
           }}
         >
-          Signup
+          Join us
         </button>
-        <button className="btn">Login</button>
         <button className="btn">Services</button>
         <button className="btn">Contact Us</button>
       </div>
