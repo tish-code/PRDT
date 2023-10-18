@@ -15,9 +15,9 @@ function Auth_modal({ handleClose, open }: Props) {
           onClick={(e) => {
             if (e.target === e.currentTarget) handleClose();
           }}
-          className="flex flex-col items-center justify-center fixed bg-[rgba(0,0,0,0.5)] z-50 top-0 left-0 h-[100%] w-[100%]"
+          className="flex flex-col items-center justify-center fixed bg-[rgba(0,0,0,0.3)] top-0 left-0 h-[100%] w-[100%] "
         >
-          <div className="bg-white px-10 w-[50%] max-md:w-[70%] max-sm:w-[80%] max-[400px]:w-full">
+          <div className="bg-white px-10 w-[50%] max-w-[550px] max-md:w-[70%] max-sm:w-[80%] max-[400px]:w-full rounded-lg">
             <div className="flex flex-col">
               <p className="mx-[auto] mt-[2rem] text-[1.6em] text-[#2c55d4] font-big">
                 PRDT
@@ -33,7 +33,7 @@ function Auth_modal({ handleClose, open }: Props) {
                 type="text"
                 placeholder="Password"
               />
-              <button className="w-full bg-[#2c55d4] text-[#fff]  font-big rounded-md text-[1rem] py-[0.55rem]">
+              <button className="w-full bg-[#2c55d4] text-[#fff]  font-big rounded-md text-[1rem] py-[0.55rem] hover:opacity-[0.8]">
                 Sign in
               </button>
               <div className="flex items-center justify-center my-[1.5rem] ">
@@ -41,7 +41,7 @@ function Auth_modal({ handleClose, open }: Props) {
                 <p className="mx-[1.5rem] flex-2">or</p>{" "}
                 <div className={line_style}></div>
               </div>
-              <button className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 font-big rounded-md py-1">
+              <button className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 font-big rounded-md py-1 hover:opacity-[0.8]">
                 <img
                   src={image}
                   alt="google logo"
