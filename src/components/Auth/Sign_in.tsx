@@ -19,7 +19,7 @@ function Sign_in() {
       ...others
     } = data.user;
     localStorage.setItem("user", JSON.stringify(others));
-    // return (window.location = "/" as unknown as Location);
+    return (window.location = "/" as unknown as Location);
   };
 
   //styles
