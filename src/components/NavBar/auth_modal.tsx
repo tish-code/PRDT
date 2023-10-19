@@ -2,7 +2,7 @@ const image = require("../../assets/google.png");
 
 interface Props {
   handleClose: () => void;
-  open: any;
+  open: Boolean;
 }
 function Auth_modal({ handleClose, open }: Props) {
   const line_style = "border border-gray-200 flex-1 h-0";
@@ -15,7 +15,7 @@ function Auth_modal({ handleClose, open }: Props) {
           onClick={(e) => {
             if (e.target === e.currentTarget) handleClose();
           }}
-          className="flex flex-col items-center justify-center fixed bg-[rgba(0,0,0,0.3)] top-0 left-0 h-[100%] w-[100%] "
+          className="flex flex-col items-center justify-center fixed bg-[rgba(0,0,0,0.3)] top-[3.9em] left-0 h-[100%] w-[100%]"
         >
           <div className="bg-white px-10 w-[50%] max-w-[550px] max-md:w-[70%] max-sm:w-[80%] max-[400px]:w-full rounded-lg">
             <div className="flex flex-col">
