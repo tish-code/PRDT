@@ -19,7 +19,7 @@ interface IUserContext {
 interface IReactProvider {
   children: ReactNode;
 }
-const UserContext = createContext<IUserContext | undefined>(undefined);
+const UserContext = createContext<IUserContext | null>(null);
 
 export function UserProvider({ children }: IReactProvider) {
   const [user, setUser] = useState<IUser | null>(null);
@@ -35,6 +35,6 @@ export function UserProvider({ children }: IReactProvider) {
 
 export function useUser() {
   const context = useContext(UserContext);
-  if (context === undefined) throw new Error("Context");
+  if (context === null) throw new Error("Context");
   return context;
 }
