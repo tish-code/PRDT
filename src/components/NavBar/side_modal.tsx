@@ -77,7 +77,7 @@ function Side_modal({ handleClose, open }: Props) {
                 <Link to="/sign-in">
                   <button
                     onClick={() => {
-                      console.log("hello");
+                      console.log("modal sign-in btn clicked!");
                     }}
                     className="w-[100%] mt-[auto] text-gray-950 border-2 border-gray-900  text-[0.9em] hover:border-[rgba(0,0,0,0.7)] px-[0.4em] py-[0.4em] rounded-md"
                   >

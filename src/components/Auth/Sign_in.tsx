@@ -1,4 +1,4 @@
-import { Link, redirect as Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { auth, provider } from "./firebase-config";
 import { signInWithPopup } from "firebase/auth";
 
@@ -19,7 +19,7 @@ function Sign_in() {
       ...others
     } = data.user;
     localStorage.setItem("user", JSON.stringify(others));
-    return (window.location = "/" as unknown as Location);
+    // return (window.location = "/" as unknown as Location);
   };
 
   //styles
@@ -49,7 +49,9 @@ function Sign_in() {
           <button className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 rounded-md hover:opacity-[0.8]">
             <div
               className="flex items-center my-[0.1em]"
-              onClick={handleGoogleSignIn}
+              onClick={async () => {
+                await handleGoogleSignIn();
+              }}
             >
               <img
                 src={image}
