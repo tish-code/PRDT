@@ -5,17 +5,18 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Sign_in from "./components/Auth/Sign_in";
 import { UserProvider } from "./UserProvider";
+import { RouterName } from "./types";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: RouterName.HOME,
     element: <App />,
   },
   {
-    path: "/sign-in",
+    path: RouterName.SIGN_IN,
     element: <Sign_in />,
   },
 ]);

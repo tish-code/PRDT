@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth, provider } from "./firebase-config";
 import { signInWithPopup } from "firebase/auth";
+import { RouterName } from "../../types";
+import { useUser } from "../../UserProvider";
 
 const image = require("../../assets/google.png");
 
 function Sign_in() {
+  const navigate = useNavigate();
+
+  const { updateUserCurrentUser } = useUser();
   const handleGoogleSignIn = async () => {
     const data = await signInWithPopup(auth, provider);
     const {
@@ -18,8 +23,9 @@ function Sign_in() {
       tenantId,
       ...others
     } = data.user;
+    updateUserCurrentUser({ ...others, isLoggedIn: true });
     localStorage.setItem("user", JSON.stringify(others));
-    return (window.location = "/" as unknown as Location);
+    navigate(RouterName.HOME);
   };
 
   //styles

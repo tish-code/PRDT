@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../../UserProvider";
+import { RouterName } from "../../types";
 
 interface Props {
   handleClose: () => void;
   open: Boolean;
 }
 function Side_modal({ handleClose, open }: Props) {
-  const { user } = useUser(); // @ts-ignore
+  const { user } = useUser();
+  const navigate = useNavigate();
+  const { updateUserCurrentUser } = useUser();
   return (
     <>
       {open && (
@@ -66,7 +69,8 @@ function Side_modal({ handleClose, open }: Props) {
                 <button
                   onClick={() => {
                     localStorage.removeItem("user");
-                    window.location.reload();
+                    updateUserCurrentUser(null);
+                    navigate(RouterName.HOME);
                   }}
                   className="w-[100%] mt-[auto] text-white bg-primary-100 text-[0.9em] hover:opacity-[0.7] px-[0.4em] py-[0.4em] rounded-md"
                 >

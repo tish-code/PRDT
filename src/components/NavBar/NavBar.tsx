@@ -8,7 +8,6 @@ function NavBar() {
   const handleClose = () => setOpenSidModal(false);
   const handleOpen = () => setOpenSidModal(true);
   const { user } = useUser();
-  // console.log(user?.photoURL);
 
   return (
     <div className="flex items-center justify-between pb-[7px] mx-[auto] border-b-2 border-b-[#e9e9e9f5] max-md:w-full">

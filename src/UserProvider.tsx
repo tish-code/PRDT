@@ -6,15 +6,17 @@ import {
   useState,
 } from "react";
 
-interface IUser {
+export interface IUser {
   accessToken: string;
   displayName: string;
   email: string;
   photoURL: string;
   stsTokenManager: { refreshToken: string };
+  isLoggedIn: boolean;
 }
 interface IUserContext {
   user: IUser | null;
+  updateUserCurrentUser: (currentUser: any) => void;
 }
 interface IReactProvider {
   children: ReactNode;
@@ -22,14 +24,18 @@ interface IReactProvider {
 const UserContext = createContext<IUserContext | null>(null);
 
 export function UserProvider({ children }: IReactProvider) {
-  const [user, setUser] = useState<IUser | null>(null);
+  const user_profile = JSON.parse(localStorage.getItem("user") || "{}");
+  const [user, setUser] = useState<IUser | null>(
+    user_profile ? user_profile : null
+  );
 
-  useEffect(() => {
-    const userData = JSON.parse(localStorage.getItem("user") || "{}");
-    setUser(userData);
-  }, []);
+  const updateUserCurrentUser = (currentUser: IUser) => {
+    setUser(currentUser);
+  };
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, updateUserCurrentUser }}>
+      {children}
+    </UserContext.Provider>
   );
 }
 
