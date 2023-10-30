@@ -13,7 +13,7 @@ function NavBar() {
     <div className="flex items-center justify-between pb-[7px] mx-[auto] border-b-2 border-b-[#e9e9e9f5] max-md:w-full">
       {!user?.accessToken ? (
         <button className="hidden max-md:block border border-gray-900 py-[2px] px-[9px] rounded-md">
-          Sign up
+          <Link to="/sign-in">Sign up</Link>
         </button>
       ) : (
         <> </>
@@ -64,7 +64,7 @@ function NavBar() {
           <button
             className={`border border-gray-900 py-[2px] px-[9px] rounded-md font-medium hover:text-[rgba(0,0,0,0.7)] hover:border-[rgba(0,0,0,0.7)]`}
           >
-            <Link to={`/sign-up`}>Sign up</Link>
+            <Link to={`/sign-in`}>Sign up</Link>
           </button>
         </div>
       ) : (
