@@ -3,6 +3,7 @@ import { auth, provider } from "./firebase-config";
 import { signInWithPopup } from "firebase/auth";
 import { RouterName } from "../../types";
 import { useUser } from "../../UserProvider";
+import { useState } from "react";
 
 const image = require("../../assets/google.png");
 
@@ -27,7 +28,7 @@ function Sign_in() {
     localStorage.setItem("user", JSON.stringify(others));
     navigate(RouterName.HOME);
   };
-
+  const [signIn, SetSignIn] = useState("Sign in with google");
   //styles
   const line_style = "border border-gray-200 flex-1 h-0";
   const input_style =
@@ -42,9 +43,23 @@ function Sign_in() {
           <p className="mx-[auto] text-[1.3em] my-[1.5rem]">Sign in to PRDT</p>
         </div>
         <div className="">
-          <input className={input_style} type="text" placeholder="Email" />
-          <input className={input_style} type="text" placeholder="Password" />
-          <button className="w-full bg-[#2c55d4] text-[#fff]  rounded-md text-[1rem] py-[0.4em] hover:opacity-[0.8]">
+          <input
+            disabled
+            className={input_style}
+            type="text"
+            placeholder="Email"
+          />
+          <input
+            disabled
+            className={input_style}
+            type="text"
+            placeholder="Password"
+          />
+          <button
+            type="button"
+            disabled
+            className="w-full bg-[#2c55d4] text-[#fff]  rounded-md text-[1rem] py-[0.4em] hover:opacity-[0.8]"
+          >
             Sign in
           </button>
           <div className="flex items-center justify-center my-[1.2rem] ">
@@ -52,10 +67,14 @@ function Sign_in() {
             <p className="mx-[1.5rem] flex-2">or</p>{" "}
             <div className={line_style}></div>
           </div>
-          <button className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 rounded-md hover:opacity-[0.8]">
+          <button
+            type="button"
+            className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 rounded-md hover:opacity-[0.8]"
+          >
             <div
               className="flex items-center my-[0.1em]"
               onClick={async () => {
+                SetSignIn("Loading...");
                 await handleGoogleSignIn();
               }}
             >
@@ -64,7 +83,7 @@ function Sign_in() {
                 alt="google logo"
                 className="mr-[0.4rem] w-[2rem]"
               />
-              Sign in with google
+              {signIn}
             </div>
           </button>
         </div>
