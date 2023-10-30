@@ -69,15 +69,13 @@ function Sign_in() {
           </div>
           <button
             type="button"
+            onClick={async () => {
+              SetSignIn("Loading...");
+              await handleGoogleSignIn();
+            }}
             className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 rounded-md hover:opacity-[0.8]"
           >
-            <div
-              className="flex items-center my-[0.1em]"
-              onClick={async () => {
-                SetSignIn("Loading...");
-                await handleGoogleSignIn();
-              }}
-            >
+            <div className="flex items-center my-[0.1em]">
               <img
                 src={image}
                 alt="google logo"
