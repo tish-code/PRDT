@@ -4,6 +4,7 @@ import { signInWithPopup } from "firebase/auth";
 import { RouterName } from "../../types";
 import { useUser } from "../../UserProvider";
 import { useState } from "react";
+import { logo as Sign_in_logo } from "../NavBar/_pieces";
 
 const image = require("../../assets/google.png");
 
@@ -37,9 +38,7 @@ function Sign_in() {
     <div className="flex flex-col items-center h-[100vh]">
       <div className="bg-white px-10 w-[400px] rounded-lg">
         <div className="flex flex-col">
-          <p className="mx-[auto] mt-[2rem] text-[1.6em] text-[#2c55d4] font-big">
-            <Link to="/">PRDT</Link>
-          </p>
+          <Sign_in_logo styles="mx-[auto] mt-[2rem] text-[1.6em] text-[#2c55d4] font-big" />
           <p className="mx-[auto] text-[1.3em] my-[1.5rem]">Sign in to PRDT</p>
         </div>
         <div className="">
