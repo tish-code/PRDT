@@ -1,4 +1,4 @@
 export enum RouterName {
-  HOME = "/",
+  ROOT = "/",
   SIGN_IN = "/sign-in",
 }

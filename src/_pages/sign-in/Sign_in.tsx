@@ -1,36 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
-import { auth, provider } from "./firebase-config";
-import { signInWithPopup } from "firebase/auth";
-import { RouterName } from "../../types";
-import { useUser } from "../../UserProvider";
-import { useState } from "react";
-import { logo as Sign_in_logo } from "../NavBar/_pieces";
-
-const image = require("../../assets/google.png");
+import { logo as Sign_in_logo } from "../../_components/navBar/_fragments";
+import GoogleLogin from "../../_components/google-login";
 
 function Sign_in() {
-  const navigate = useNavigate();
-
-  const { updateUserCurrentUser } = useUser();
-  const handleGoogleSignIn = async () => {
-    const data = await signInWithPopup(auth, provider);
-    const {
-      providerData,
-      reload,
-      emailVerified,
-      isAnonymous,
-      uid,
-      metadata,
-      providerId,
-      tenantId,
-      ...others
-    } = data.user;
-    updateUserCurrentUser({ ...others, isLoggedIn: true });
-    localStorage.setItem("user", JSON.stringify(others));
-    navigate(RouterName.HOME);
-  };
-  const [signIn, SetSignIn] = useState("Sign in with google");
-  //styles
   const line_style = "border border-gray-200 flex-1 h-0";
   const input_style =
     "w-full rounded-md py-[0.4em] px-[0.4em] text-gray-900 text-[0.9em] outline-indigo-900 border border-gray-400 focus:outline-none focus:border-2 focus:border-[#2c55d4]  mb-[1.3rem]";
@@ -66,23 +38,7 @@ function Sign_in() {
             <p className="mx-[1.5rem] flex-2">or</p>{" "}
             <div className={line_style}></div>
           </div>
-          <button
-            type="button"
-            onClick={async () => {
-              SetSignIn("Loading...");
-              await handleGoogleSignIn();
-            }}
-            className="flex w-full items-center justify-center mb-[1rem] border border-gray-800 text-[1rem] text-gray-800 rounded-md hover:opacity-[0.8]"
-          >
-            <div className="flex items-center my-[0.1em]">
-              <img
-                src={image}
-                alt="google logo"
-                className="mr-[0.4rem] w-[2rem]"
-              />
-              {signIn}
-            </div>
-          </button>
+          <GoogleLogin />
         </div>
         <div className="flex mt-[1.5em] text-[0.9em]">
           <p>

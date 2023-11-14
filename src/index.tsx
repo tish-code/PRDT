@@ -3,23 +3,13 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Sign_in from "./components/Auth/Sign_in";
 import { UserProvider } from "./UserProvider";
-import { RouterName } from "./types";
+import { router } from "./_router";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
-const router = createBrowserRouter([
-  {
-    path: RouterName.HOME,
-    element: <App />,
-  },
-  {
-    path: RouterName.SIGN_IN,
-    element: <Sign_in />,
-  },
-]);
+
 root.render(
   <React.StrictMode>
     <UserProvider>

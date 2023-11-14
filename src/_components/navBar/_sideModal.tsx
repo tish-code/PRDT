@@ -70,7 +70,7 @@ function Side_modal({ handleClose, open }: Props) {
                   onClick={() => {
                     localStorage.removeItem("user");
                     updateUserCurrentUser(null);
-                    navigate(RouterName.HOME);
+                    navigate(RouterName.ROOT);
                   }}
                   className="w-[100%] mt-[auto] text-white bg-primary-100 text-[0.9em] hover:opacity-[0.7] px-[0.4em] py-[0.4em] rounded-md"
                 >

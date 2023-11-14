@@ -1,21 +1,25 @@
 import { useState } from "react";
 import { useUser } from "../../UserProvider";
-import Side_modal from "./side_modal";
+import Side_modal from "./_sideModal";
 import {
-  sign_up as Nav_sign_up,
-  sign_in as Nav_sign_in,
   logo as Nav_logo,
-} from "./_pieces";
+  FullWidthAuthBtns,
+  OpenSideModalBtn,
+} from "./_fragments";
+import { Link } from "react-router-dom";
+
 function NavBar() {
-  const [openNavSideModal, setOpenSidModal] = useState(false);
-  const handleClose = () => setOpenSidModal(false);
-  const handleOpen = () => setOpenSidModal(true);
+  const [openNavSideModal, setOpenSideModal] = useState(false);
+  const handleClose = () => setOpenSideModal(false);
+  const handleOpen = () => setOpenSideModal(true);
   const { user } = useUser();
 
   return (
     <div className="flex items-center justify-between pb-[7px] mx-[auto] border-b-2 border-b-[#e9e9e9f5] max-md:w-full">
       {!user?.accessToken && (
-        <Nav_sign_up styles="hidden max-md:block border border-gray-900 py-[2px] px-[9px] rounded-md" />
+        <button className="hidden max-md:block border border-gray-900 py-[2px] px-[9px] rounded-md">
+          <Link to="/sign-up">Sign up</Link>
+        </button>
       )}
       {!user?.accessToken ? (
         <Nav_logo styles="logo font-big text-[1.6em] max-md:mx-[auto] max-md:text-[1.4em]" />
@@ -37,28 +41,11 @@ function NavBar() {
           </div>
         </>
       )}
-      <button
-        className="icon hidden max-md:block text-[1.3em] "
-        onClick={() => {
-          openNavSideModal ? setOpenSidModal(false) : setOpenSidModal(true);
-        }}
-      >
-        {openNavSideModal ? (
-          <p className="transition-[5s]">&#10005;</p>
-        ) : (
-          <p>&#9776;</p>
-        )}
-      </button>
-      {!user?.accessToken && (
-        <div className="max-md:hidden">
-          <Nav_sign_in
-            styles={`font-medium py-[2px] px-[9px] rounded-md mr-5 hover:text-[rgba(0,0,0,0.7)]`}
-          />
-          <Nav_sign_up
-            styles={`border border-gray-900 py-[2px] px-[9px] rounded-md font-medium hover:text-[rgba(0,0,0,0.7)] hover:border-[rgba(0,0,0,0.7)]`}
-          />
-        </div>
-      )}
+      <OpenSideModalBtn
+        setOpenSideModal={setOpenSideModal}
+        openNavSideModal={openNavSideModal}
+      />
+      {!user?.accessToken && <FullWidthAuthBtns />}
       <Side_modal open={openNavSideModal} handleClose={handleClose} />
     </div>
   );
