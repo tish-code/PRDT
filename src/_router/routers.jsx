@@ -1,7 +1,8 @@
-import App from "../App";
 import Sign_in from "../_pages/sign-in/Sign_in";
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { RouterName } from "../types";
+import MainLayout from "../_components/layout";
+import App from "../App";
 
 const PUBLIC = [
   {
@@ -14,7 +15,10 @@ const router = createBrowserRouter([
   {
     path: RouterName.ROOT,
     element: <App />,
-    children: [...PUBLIC],
+    children: [
+      { path: RouterName.ROOT, element: <MainLayout />, children: [] },
+      ...PUBLIC,
+    ],
   },
 ]);
 
