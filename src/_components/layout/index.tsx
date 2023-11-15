@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 function MainLayout() {
   return (
-    <div>
+    <div className="py-[10px] px-[20px]">
       <div>
         <NavBar />
       </div>
