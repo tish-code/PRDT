@@ -12,10 +12,8 @@ interface IFormValues {
 }
 function Sign_in() {
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Enter a valid email")
-      .required("email is required"),
-    password: Yup.string().required("password is required"),
+    email: Yup.string().email("Invalid email").required("email is required"),
+    password: Yup.string().required("Password is required"),
   });
   const initialValues = {
     email: "",
@@ -41,38 +39,40 @@ function Sign_in() {
               onSubmit={handleSubmit}
               validationSchema={validationSchema}
             >
-              {({ handleChange, values, handleBlur, errors, touched }) => (
-                <Form>
-                  <CustomInputs
-                    error={errors.email}
-                    label={"Email"}
-                    type={"text"}
-                    name={"email"}
-                    placeholder={"Enter password"}
-                    value={values.email}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    touched={touched.email}
-                  />
-                  <CustomInputs
-                    error={errors.password}
-                    label={"Password"}
-                    type={"password"}
-                    name={"password"}
-                    placeholder={"Enter password"}
-                    value={values.password}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    touched={touched.password}
-                  />
-                  <button
-                    type="submit"
-                    className="w-full bg-[#2c55d4] text-[#fff]  rounded-md text-[1rem] py-[0.4em] hover:opacity-[0.8]"
-                  >
-                    Sign in
-                  </button>
-                </Form>
-              )}
+              {({ handleChange, values, handleBlur, errors, touched }) => {
+                return (
+                  <Form>
+                    <CustomInputs
+                      error={errors.email}
+                      label={"Email"}
+                      type={"text"}
+                      name={"email"}
+                      placeholder={"Enter password"}
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      touched={touched.email}
+                    />
+                    <CustomInputs
+                      error={errors.password}
+                      label={"Password"}
+                      type={"password"}
+                      name={"password"}
+                      placeholder={"Enter password"}
+                      value={values.password}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      touched={touched.password}
+                    />
+                    <button
+                      type="submit"
+                      className="w-full bg-[#2c55d4] text-[#fff]  rounded-md text-[1rem] py-[0.4em] hover:opacity-[0.8]"
+                    >
+                      Sign in
+                    </button>
+                  </Form>
+                );
+              }}
             </Formik>
             <div className="flex items-center justify-center my-[1.2rem] ">
               <div className={line_style}></div>
