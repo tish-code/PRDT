@@ -26,7 +26,7 @@ function Sign_in() {
 
   return (
     <AuthLayout>
-      <div className="bg-white px-10 w-[400px] rounded-lg shadow-lg mt-[100px] pb-[30px]">
+      <div className="bg-white px-10 w-[400px]  mt-[100px] pb-[30px]">
         <Auth_Header />
         <div>
           <Formik

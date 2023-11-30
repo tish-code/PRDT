@@ -11,7 +11,7 @@ interface IFormValues {
 }
 function Sign_up() {
   const validationSchema = Yup.object().shape({
-    firstname: Yup.string().required("firstname is required"),
+    name: Yup.string().required("firstname is required"),
     email: Yup.string().email("Invalid email").required("email is required"),
     password: Yup.string().required("Password is required"),
     comfirm_password: Yup.string().oneOf(
@@ -20,8 +20,7 @@ function Sign_up() {
     ),
   });
   const initialValues = {
-    firstname: "",
-    lastname: "",
+    name: "",
     email: "",
     password: "",
     comfirm_password: "",
@@ -32,7 +31,7 @@ function Sign_up() {
 
   return (
     <AuthLayout>
-      <div className="bg-white px-10 w-[400px] rounded-lg shadow-lg mt-[40px] pb-[30px]">
+      <div className="bg-white px-10 w-[400px] mt-[40px] pb-[30px]">
         <Auth_Header />
         <div>
           <Formik
@@ -44,26 +43,15 @@ function Sign_up() {
               return (
                 <Form>
                   <CustomInputs
-                    error={errors.firstname}
-                    label={"Firstname"}
+                    error={errors.name}
+                    label={"Name"}
                     type={"text"}
-                    name={"firstname"}
-                    placeholder={"Enter firstname"}
-                    value={values.firstname}
+                    name={"name"}
+                    placeholder={"John Doe"}
+                    value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    touched={touched.firstname}
-                  />
-                  <CustomInputs
-                    error={errors.lastname}
-                    label={"Firstname"}
-                    type={"text"}
-                    name={"lastname"}
-                    placeholder={"Enter lastname"}
-                    value={values.lastname}
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    touched={touched.lastname}
+                    touched={touched.name}
                   />
                   <CustomInputs
                     error={errors.email}
