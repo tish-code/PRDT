@@ -7,9 +7,9 @@ function CustomInputs({ error, touched, label, type, ...props }: any) {
   }
   return (
     <div className="mb-[1.3rem] relative">
-      <label className="text-gray-800">{label}</label>
+      <label className="text-gray-800 font-light text-[0.9rem]">{label}</label>
       <input
-        className={`${input_style} ${
+        className={`${input_style} font-light ${
           error && touched ? "border-red-500" : ""
         } `}
         type={showPassword ? "text" : type}

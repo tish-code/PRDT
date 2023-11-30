@@ -42,7 +42,7 @@ function Sign_in() {
                     label={"Email"}
                     type={"text"}
                     name={"email"}
-                    placeholder={"Enter email"}
+                    placeholder={"name@email.com"}
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}

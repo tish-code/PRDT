@@ -58,7 +58,7 @@ function Sign_up() {
                     label={"Email"}
                     type={"text"}
                     name={"email"}
-                    placeholder={"Enter password"}
+                    placeholder={"name@email.com"}
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
